@@ -3,14 +3,13 @@ package com.test.newsjeptackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.test.newsjeptackcompose.presentation.onboarding.OnBoardingScreen
 import com.test.newsjeptackcompose.ui.theme.NewsJeptackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +18,10 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             NewsJeptackComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Surface(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+                    OnBoardingScreen()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NewsJeptackComposeTheme {
-        Greeting("Android")
     }
 }
